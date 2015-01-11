@@ -12,3 +12,5 @@ pom.xml.asc
 /.nrepl-port
 cah_clone.iml
 /.lein-git-deps
+.repl
+.lein-repl-history

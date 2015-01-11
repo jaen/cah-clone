@@ -10,7 +10,7 @@
 (defmulti async-handler :id)
 
 (defn- base-handler [{:as ev-msg :keys [id ?data event]}]
-  (log/log "Event:" event)
+  (log/log "Event: %s" event)
   (async-handler ev-msg))
 
 (defn make-handler []
@@ -20,16 +20,16 @@
   [{:as ev-msg :keys [event id ?data ring-req ?reply-fn send-fn]}]
   (let [session (:session ring-req)
         uid     (:uid     session)]
-    (log/log "Unhandled event:" event)
+    (log/log "Unhandled event: %s" event)
     (when ?reply-fn
       (?reply-fn {:test event}))))
 
 ; (defn handle-receive [state]
 ;   (fn [{:keys [event send-fn]}]
 ;     (let [[id data :as ev] event]
-;       (log/log "Event:" event)
-;       (log/log "Event id:" id )
-;       (log/log "Event:" ev)
+;       (log/log "Event: %s" event)
+;       (log/log "Event id: %s" id )
+;       (log/log "Event: %s" ev)
 ;       (match [id data]
 ;         [:chsk/state {:first-open? true}]
 ;         (log/log "Channel socket successfully established!")

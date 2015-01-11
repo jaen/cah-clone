@@ -2,5 +2,5 @@
   (:require
     [taoensso.encore :as encore :refer (logf)]))
 
-(defn log [fmt &xs]
+(defn log [fmt & xs]
   (apply encore/logf (concat [fmt] xs)))

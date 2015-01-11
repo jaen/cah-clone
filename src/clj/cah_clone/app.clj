@@ -6,6 +6,7 @@
     [com.stuartsierra.component :as component]
 
     [cah-clone.server        :as server]
+    [cah-clone.logic         :as logic]
     [cah-clone.server.state  :as state]
     [cah-clone.server.router :as router]
     [cah-clone.server.nrepl  :as nrepl]
