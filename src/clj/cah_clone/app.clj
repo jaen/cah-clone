@@ -7,12 +7,15 @@
 
     [cah-clone.server        :as server]
     [cah-clone.server.state  :as state]
-    [cah-clone.server.async  :as async]
-    [cah-clone.server.router :as router]))
+    [cah-clone.server.router :as router]
+    [cah-clone.server.nrepl  :as nrepl]
+    [cah-clone.async         :as async]))
 
 (defn make-app [options]
   (let [server-port (:port options 300)
         server      (server/make-server {:port server-port :env :dev})]
     (component/system-map
-      :router (router/make-router)
+      :nrepl  (nrepl/make-nrepl)
+      :async  (async/make-async)
+      :router (component/using (router/make-router) [:async])
       :server (component/using server [:router]))))

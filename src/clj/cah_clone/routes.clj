@@ -1,10 +1,11 @@
-(ns cah-clone.server.routes)
+(ns cah-clone.routes)
 
 (defn combined-routes
   ([]     (combined-routes []))
   ([with] (concat [[""                                  :index]]
                   with
-                  [[["assets/" [ #".*" :resource-path]] :assets]])))
+                  [[["assets" [#".*" :resource-path]] :assets]
+                   [#".*" :not-found]])))
 
 (defn make-routes
   ([] (make-routes {}))

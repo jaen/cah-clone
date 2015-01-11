@@ -56,7 +56,8 @@
                  [org.clojure/tools.namespace "0.2.8"]
                  [com.stuartsierra/component "0.2.2"]
                  [com.taoensso/carmine "2.9.0"]
-                 [com.datomic/datomic-pro "0.9.5078" :exclusions [joda-time]]]
+                 [com.datomic/datomic-pro "0.9.5078" :exclusions [joda-time]]
+                 [org.clojure/tools.nrepl "0.2.5"]]
 
   :plugins [[lein-typed "0.3.5"]
             [com.keminglabs/cljx "0.5.0"]
@@ -71,9 +72,9 @@
   :bower-dependencies [[foundation "5.4.7"]
                        [font-awesome "3.0.2"]]
 
-  :hooks [cljx.hooks leiningen.cljsbuild]
+  ; :hooks [cljx.hooks leiningen.cljsbuild]
 
-  ; :prep-tasks [["cljx" "once"]]
+  :prep-tasks [["cljx" "once"]]
 
   :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
 

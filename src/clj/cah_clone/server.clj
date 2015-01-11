@@ -8,7 +8,7 @@
 (defrecord Server [port env routes handler server]
   component/Lifecycle
   (start [component]
-    (if (:stop! component)
+    (if (:server component)
       component
       (do
         (timbre/info "Starting webserver.")
@@ -16,13 +16,15 @@
               server (http-kit/run-server handler { :port (or port 0) })
               port (-> server meta :local-port)]
           (timbre/info "Web server running on port" port ".")
-          (assoc component :stop! server :port port)))))
+          (assoc component :server server :port port)))))
   (stop [component]
-    (timbre/info "Stopping webserver.")
-    (when-let [stop! (:stop! component)]
-      (stop! :timeout 250))
-    (timbre/info "Stopped webserver.")
-    (dissoc component :stop! :router)))
+    (if-let [stop-server! (:server component)]
+      (do
+        (timbre/info "Stopping webserver.")
+        (stop-server! :timeout 250)
+        (timbre/info "Stopped webserver.")
+        (dissoc component :server :router))
+      component)))
 
 
 (defn make-server

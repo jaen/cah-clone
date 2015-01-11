@@ -21,10 +21,10 @@
   ([options] (reset! app (app/make-app options))))
 
 (defn start-app []
-  (swap! app #(component/start %)))
+  (swap! app #(when % (component/start %))))
 
 (defn stop-app []
-  (swap! app #(when % (component/stop %))))
+  (swap! app #(component/stop %)))
 
 (defn go []
   (init-app)
