@@ -1,9 +1,6 @@
 (ns cah-clone.async.handler
   (:require [taoensso.timbre :as timbre]
-            [taoensso.sente  :as sente]
-            [clojure.core.async :as async :refer (<! <!! >! >!! put! chan go go-loop)]
-            [ring.middleware.reload :as reload]
-            [ns-tracker.core :as ns-tracker]))
+            [ring.middleware.reload :as reload]))
 
 (defmulti async-handler :id) ; Dispatch on event-id
 

@@ -16,10 +16,12 @@
   :source-paths ["src/clj" "src/cljs" "target/generated"]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2511"]
+                 [org.clojure/clojurescript "0.0-2665"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha" :exclusions [[org.clojure/clojure]]]
 
                  [org.clojure/core.match "0.3.0-alpha4"]
+                 [com.taoensso/encore "1.19.1"]
+                 [com.cemerick/piggieback "0.1.5-SNAPSHOT"]
                  [com.palletops/leaven "0.2.1"]
                  [bidi "1.14.0" :exclusions [org.clojure/clojure]]
                  [http-kit "2.1.18"]
@@ -29,18 +31,19 @@
                  [clj-time "0.9.0"]
                  [om "0.8.0-beta5"]
                  [sablono "0.2.22"]
+                 [kioo "0.4.0"]
                  [optimus "0.15.1"]
                  [optimus-sass "0.0.3"]
                  [com.taoensso/timbre "3.3.1-1cd4b70"]
                  [com.palletops/log-config "0.1.4"]
                  [ring.middleware.logger "0.5.0"]
-                 [com.taoensso/encore "1.19.1"]
                  [ring "1.3.0"]
                  [ring/ring-headers "0.1.0"]
                  [ring/ring-anti-forgery "1.0.0"]
                  [ring/ring-devel "1.3.0"]
                  [ring/ring-core "1.3.0"]
                  [com.taoensso/sente "1.3.0-RC1"]
+                 ; [com.taoensso/sente "1.2.0"]
                  [io.clojure/liberator-transit "0.3.0"]
                  [com.cognitect/transit-clj "0.8.259"]
                  [com.cognitect/transit-cljs "0.8.194"]
@@ -57,7 +60,8 @@
                  [com.stuartsierra/component "0.2.2"]
                  [com.taoensso/carmine "2.9.0"]
                  [com.datomic/datomic-pro "0.9.5078" :exclusions [joda-time]]
-                 [org.clojure/tools.nrepl "0.2.5"]]
+                 [org.clojure/tools.nrepl "0.2.5"]
+                 [joplin.core "0.2.5"]]
 
   :plugins [[lein-typed "0.3.5"]
             [com.keminglabs/cljx "0.5.0"]
@@ -65,7 +69,11 @@
             [lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.13"]
             [lein-bower "0.5.1"]
-            [lein-environ "1.0.0"]]
+            [lein-environ "1.0.0"]
+            [joplin.lein "0.2.5"]]
+            ;[lein-git-deps "0.0.2-SNAPSHOT"]]
+
+  ;:git-dependencies [["https://github.com/cemerick/piggieback.git"]]
 
   :bower {:directory "resources/public/lib"}
 
